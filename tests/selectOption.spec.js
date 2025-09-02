@@ -5,7 +5,7 @@ test.skip(({ browserName }) => browserName === 'webkit', 'This feature is not cr
 
 test('launch browser with context', async () => {
   // Launch browser
-  const browser = await chromium.launch({ headless: false }); // set true for CI
+  const browser = await chromium.launch({ headless: true }); // set true for CI
 
   // Create a new isolated context
   const context = await browser.newContext({

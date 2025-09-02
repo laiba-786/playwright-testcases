@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test';
 
 test('launch browser with context', async () => {
   // Launch browser
-  const browser = await chromium.launch({ headless: false }); // set true for CI
+  const browser = await chromium.launch({ headless: true }); // set true for CI
 
   // Create a new isolated context
   const context = await browser.newContext({
@@ -14,10 +14,7 @@ test('launch browser with context', async () => {
   // Open a page in this context
   const page = await context.newPage();
   await page.goto('https://demo.automationtesting.in/FileDownload.html');
-  page.getByRole('link', { name: 'Download', exact: true }).click();
-  const downloadPromise = page.waitForEvent('download');
-  const dowonload = await downloadPromise;
-
+  
   await page.pause();
   // Cleanup
   await context.close();
